@@ -5,19 +5,19 @@ var _this = this;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-require('babelify/polyfill');
+require('babel/polyfill');
 
 require('whatwg-fetch');
-
-var _qs = require('qs');
-
-var _qs2 = _interopRequireDefault(_qs);
 
 var _request = require('./request');
 
 var _request2 = _interopRequireDefault(_request);
 
-var TRANSLATOR_PATH = 'https://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
+var TRANSLATOR_PATH = '//api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
+
+var joinCurrentProtocol = function joinCurrentProtocol(url) {
+  return '' + location.protocol + url;
+};
 
 (function callee$0$0() {
   var TOKEN, res;
@@ -36,7 +36,9 @@ var TRANSLATOR_PATH = 'https://api.microsofttranslator.com/V2/Ajax.svc/Translate
         console.log(TOKEN);
         // debugger;
         context$1$0.next = 7;
-        return regeneratorRuntime.awrap((0, _request2['default'])(TRANSLATOR_PATH, { timeout: 5000 }, {
+        return regeneratorRuntime.awrap((0, _request2['default'])(joinCurrentProtocol(TRANSLATOR_PATH), {
+          timeout: 5000
+        }, {
           appId: 'Bearer ' + TOKEN.access_token,
           texts: JSON.stringify(['test', 'modify', 'fetch']),
           to: 'ja'
@@ -46,24 +48,29 @@ var TRANSLATOR_PATH = 'https://api.microsofttranslator.com/V2/Ajax.svc/Translate
         res = context$1$0.sent;
 
         console.log(res);
-        context$1$0.next = 15;
+        res.forEach(function (object) {
+          var p = document.createElement('p');
+          p.textContent = object.TranslatedText;
+          document.body.appendChild(p);
+        });
+        context$1$0.next = 16;
         break;
 
-      case 11:
-        context$1$0.prev = 11;
+      case 12:
+        context$1$0.prev = 12;
         context$1$0.t0 = context$1$0['catch'](0);
 
         console.log(context$1$0.t0);
         alert('リクエストはタイムアウトしました');
 
-      case 15:
+      case 16:
       case 'end':
         return context$1$0.stop();
     }
-  }, null, _this, [[0, 11]]);
+  }, null, _this, [[0, 12]]);
 })();
 
-},{"./request":2,"babelify/polyfill":5,"qs":219,"whatwg-fetch":224}],2:[function(require,module,exports){
+},{"./request":2,"babel/polyfill":5,"whatwg-fetch":224}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
