@@ -3,7 +3,8 @@
   "description": "translate-annotator",
   "scripts": {
     "start": "babel-node ./bin/www",
-    "js:frontend": "browserify frontend/main.js -t babelify -o public/js/main.js"
+    "js:frontend": "browserify frontend/main.js -t babelify -o public/js/main.js",
+    "test": "echo Done!!!"
   },
   "private": true,
   "repository": {
