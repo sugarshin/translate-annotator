@@ -17,7 +17,7 @@ var _request = require('./request');
 
 var _request2 = _interopRequireDefault(_request);
 
-var TRANSLATOR_PATH = 'http://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
+var TRANSLATOR_PATH = 'https://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
 
 (function callee$0$0() {
   var TOKEN, res;

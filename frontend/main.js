@@ -4,7 +4,7 @@ import qs from 'qs';
 
 import request from './request';
 
-const TRANSLATOR_PATH = 'http://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
+const TRANSLATOR_PATH = 'https://api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
 
 (async () => {
   try {
