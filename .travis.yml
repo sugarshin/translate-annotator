@@ -1,0 +1,11 @@
+sudo: false
+branches:
+  only:
+    - master
+deploy:
+  provider: heroku
+  api_key:
+    secure: DQSEdPE90pDCvZ62mYdGBxez/0uRray0oc08e4OctIPy6xWcZdPd5evpOtqDVybEUKudcPXQQDNhFZBP8hJSebx1ebRraPEnpJp/AYg3A27lFRHY8Wz6NX9AN6lxYkWWu3CGIrE9DcMSvXBHUZV47V5oMOr9xhCs3x9DEOddUIfM6y2lVIL5P4ZZYCCDTSV+rgHrEy55V7isyFFJONzlPRfhX1f7ldcCITYWho/WBjtDJBaN6Sp9e8+jITUi5xHX3NSmSztrYGren5selQTZf6/FUYDgPdKi6S0tVZaMP2LFZ+gdesUA8xv0xRryMs+DLQRplFYydMMuPIS6tGdPLSPfsjExDDfqrD14wwgIs97JTliccUWkJlbS8/eL0NuueHst40Fco814O1c9LchpEMXKTF8uOuJ51usko8Beu03RZNRY4Th38d/oEgICvegGpmjpRkp2D4QLxL47fuDj8lIgWj/M42NElxuzJ3ydwq1paOisAUONF0P6UVkhNroeKBo83IJJKSBoNJXJWaVRBEz+KEFOLoyhPSVrcEH7e3c/rLo21Yd6nxso8R77cDxB+f3b6pFGZjxEMmJbG/N9aAA9wLBE5CddIWmZevYnk10y4JSFHGA8ScWArIPoKI8kSik98kTFfm1U+UYWTEnOssX7VGhRvldE0BtkVIak+s8=
+  app: translate-annotator
+  on:
+    repo: sugarshin/translate-annotator
