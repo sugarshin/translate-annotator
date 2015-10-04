@@ -1,9 +1,15 @@
-import requestJSONP from './requestJSONP';
+import jsonpP from 'jsonp-p';
+import qs from 'qs';
+import assign from 'lodash/object/assign';
 
 const jsonpBaseOpts = {
   timeout: 5000
 };
 const jsonpCallback = { oncomplete: null };
+const qsStringifyOpts = {
+  arrayFormat: 'repeat',
+  strictNullHandling: true
+};
 
 /**
  * requestTranslateAPI
@@ -13,5 +19,8 @@ const jsonpCallback = { oncomplete: null };
  * @returns {Promise}
  */
 export default function requestTranslateAPI(url, queryParam) {
-  return requestJSONP(url, jsonpBaseOpts, queryParam, jsonpCallback);
+  const opts = assign({}, jsonpBaseOpts, {
+    param: qs.stringify(assign({}, queryParam, jsonpCallback), qsStringifyOpts)
+  });
+  return jsonpP(url, opts);
 }
