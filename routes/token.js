@@ -1,12 +1,11 @@
 import express from 'express';
-
-import { promisifyRequest } from '../utils/promisifyRequest';
+import requestPromise from 'request-promise';
 
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
 const router = express.Router();
 const requestTokenURL = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13';
-const requestTokenParams = {
+const requestTokenFormData = {
   client_id: encodeURI(CLIENT_ID),
   client_secret: encodeURI(CLIENT_SECRET),
   scope: encodeURI('http://api.microsofttranslator.com'),
@@ -17,15 +16,16 @@ const requestTokenParams = {
 router.get('/', (req, res, next) => {
   (async () => {
     try {
-      const response = await promisifyRequest({
+      const token = await requestPromise({
         uri: requestTokenURL,
         method: 'POST',
-        form: requestTokenParams,
+        json: true,
+        form: requestTokenFormData,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       });
-      res.send(response.body);
+      res.send(token);
     } catch (err) {
       console.log('Get TOKEN ERROR!!:\n', err);
     }
