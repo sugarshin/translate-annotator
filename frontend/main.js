@@ -1,35 +1,36 @@
 import 'babel/polyfill';
 import 'whatwg-fetch';
 
-import request from './request';
+import requestTranslateAPI from './utils/requestTranslateAPI';
+import joinCurrentProtocol from './utils/joinCurrentProtocol';
 
-const TRANSLATOR_PATH = '//api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
-
-const joinCurrentProtocol = url => {
-  return `${location.protocol}${url}`;
-};
+// const API_PATH = '//api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
+const API_PATH = '//api.microsofttranslator.com/V2/Ajax.svc/Speak';
 
 (async () => {
   try {
     const TOKEN = await fetch('/token').then(res => res.json());
-    console.log(TOKEN);
     // debugger;
-    const res = await request(joinCurrentProtocol(TRANSLATOR_PATH), {
-      timeout: 5000
-    }, {
+    const text = 'This Ecma Standard defines the ECMAScript 2015 Language. It is the sixth edition of the ECMAScript Language Specification.';
+    const res = await requestTranslateAPI(joinCurrentProtocol(API_PATH), {
       appId: `Bearer ${TOKEN.access_token}`,
-      texts: JSON.stringify(['test', 'modify', 'fetch']),
-      to: 'ja'
-    }, { oncomplete: null });
-
-    console.log(res);
-    res.forEach(object => {
-      const p = document.createElement('p');
-      p.textContent = object.TranslatedText;
-      document.body.appendChild(p);
+      text,
+      language: 'en',
+      format: 'audio/mp3'
+      // texts: JSON.stringify(['test', 'modify', 'fetch']),
+      // to: 'ja'
     });
+
+    const audio = document.createElement('audio');
+    audio.src = res;
+    audio.setAttribute('controls', '');
+    document.body.appendChild(audio);
+    // res.forEach(object => {
+    //   const p = document.createElement('p');
+    //   p.textContent = object.TranslatedText;
+    //   document.body.appendChild(p);
+    // });
   } catch (err) {
     console.log(err);
-    alert('リクエストはタイムアウトしました');
   }
 })();
