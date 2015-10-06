@@ -1,9 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
 import requestPromise from 'request-promise';
 
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
-const router = express.Router();
+const router = Router();
 const requestTokenURL = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13';
 const requestTokenFormData = {
   client_id: encodeURI(CLIENT_ID),
