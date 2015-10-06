@@ -21,7 +21,7 @@ const API_PATH = '//api.microsofttranslator.com/V2/Ajax.svc/TranslateArray';
       // language: 'en',
       // format: 'audio/mp3'
 
-      texts: JSON.stringify(['test', 'modify', 'fetch']),
+      texts: JSON.stringify(['test', 'JavaScript', 'awesome']),
       to: 'ja'
     });
 
