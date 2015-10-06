@@ -1,12 +1,12 @@
 import 'babel/polyfill';
 
-import express, { static } from 'express';
+import express from 'express';
 import path from 'path';
 import favicon from 'serve-favicon';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-imoprt stylus from 'stylus';
+import stylus from 'stylus';
 
 import routes from './routes/index';
 import token from './routes/token';
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(stylus.middleware(path.join(__dirname, 'public')));
-app.use(static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/token', token);
