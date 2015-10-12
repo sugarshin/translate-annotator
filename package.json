@@ -19,7 +19,7 @@
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
     "licensify": "^2.0.1",
-    "uglify-js": "^2.4.24",
+    "uglify-js": "^2.5.0",
     "watchify": "^3.4.0"
   },
   "dependencies": {
