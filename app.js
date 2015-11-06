@@ -1,5 +1,3 @@
-import 'babel/polyfill';
-
 import express from 'express';
 import path from 'path';
 import favicon from 'serve-favicon';
@@ -34,7 +32,7 @@ app.use((req, res, next) => {
 });
 
 if (app.get('env') === 'development') {
-  app.use((error, req, res, next) => {
+  app.use((error, req, res) => {
     res.status(error.status || 500);
     res.render('error', {
       message: error.message,
@@ -43,7 +41,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   res.status(error.status || 500);
   res.render('error', {
     message: error.message,
@@ -52,4 +50,4 @@ app.use((error, req, res, next) => {
 });
 
 
-export default app
+export default app;

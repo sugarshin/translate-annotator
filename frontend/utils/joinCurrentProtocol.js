@@ -7,6 +7,6 @@ import protocolRegex from '../../universal/protocolRegex';
  * @returns {String}
  */
 export default function joinCurrentProtocol(url) {
-  if (protocolRegex().test(url)) return url;
+  if (protocolRegex().test(url)) { return url; }
   return `${location.protocol}${url}`;
 }

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
+import 'babel-polyfill';
 import http from 'http';
 import debug from 'debug';
 import app from '../app';
 
 debug('translate-annotator:server');
-
 
 /**
  * Normalize a port into a number, string, or false.
