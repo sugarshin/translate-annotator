@@ -6,12 +6,13 @@ const { CLIENT_ID, CLIENT_SECRET } = process.env;
 const router = Router();
 const requestTokenURL = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13';
 const requestTokenFormData = {
-  /* eslint-disable */
+  /* eslint-disable camelcase */
   client_id: encodeURI(CLIENT_ID),
   client_secret: encodeURI(CLIENT_SECRET),
   scope: encodeURI('http://api.microsofttranslator.com'),
   grant_type: encodeURI('client_credentials')
-  /* eslint-enable */
+
+  /* eslint-enable camelcase */
 };
 
 /* GET Token */
