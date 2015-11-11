@@ -1,6 +1,7 @@
 {
   "extends": "sugarshin/react",
   "rules": {
-    "new-cap": 1
+    "new-cap": 1,
+    "no-shadow": 1
   }
 }
