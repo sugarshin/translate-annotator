@@ -9,7 +9,7 @@ cache:
   directories:
     - node_modules
 before_deploy:
-  - rm -rf public/js/main.js
+  - rm -rf public/assets/js/*.js
 deploy:
   provider: heroku
   api_key:
