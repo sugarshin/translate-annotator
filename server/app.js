@@ -43,21 +43,11 @@ app.use((req, res, next) => {
   next(err);
 });
 
-if (app.get('env') === 'development') {
-  app.use((error, req, res) => {
-    res.status(error.status || 500);
-    res.render('error', {
-      message: error.message,
-      error
-    });
-  });
-}
-
 app.use((error, req, res) => {
   res.status(error.status || 500);
   res.render('error', {
     message: error.message,
-    error: {}
+    error: app.get('env') === 'development' ? error : {}
   });
 });
 
