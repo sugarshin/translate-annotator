@@ -8,6 +8,8 @@ branches:
 cache:
   directories:
     - node_modules
+before_install:
+  - npm update -g npm
 before_deploy:
   - rm -rf public/assets/js/*.js
 deploy:
