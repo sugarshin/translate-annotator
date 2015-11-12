@@ -16,23 +16,21 @@ const requestTokenFormData = {
 };
 
 /* GET Token */
-router.get('/', (req, res) => {
-  (async () => {
-    try {
-      const token = await requestPromise({
-        uri: requestTokenURL,
-        method: 'POST',
-        json: true,
-        form: requestTokenFormData,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      });
-      res.send(token);
-    } catch (err) {
-      console.log('Get TOKEN ERROR!!:\n', err);
-    }
-  })();
+router.get('/', async (req, res) => {
+  try {
+    const token = await requestPromise({
+      uri: requestTokenURL,
+      method: 'POST',
+      json: true,
+      form: requestTokenFormData,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+    res.send(token);
+  } catch (err) {
+    console.log('Get TOKEN ERROR!!:\n', err);
+  }
 });
 
 export default router;
